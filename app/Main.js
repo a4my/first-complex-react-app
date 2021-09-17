@@ -1,8 +1,8 @@
-import React, { useState } from "React"
+import React, { useState } from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-// Components
+// My Components
 import Header from "./components/Header"
 import HomeGuest from "./components/HomeGuest"
 import Home from "./components/Home"
@@ -18,12 +18,12 @@ function Main() {
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Switch>
         <Route path="/" exact>
-          <Home />
+          {loggedIn ? <Home /> : <HomeGuest />}
         </Route>
-        <Route path="/about-us" exact>
+        <Route path="/about-us">
           <About />
         </Route>
-        <Route path="/terms" exact>
+        <Route path="/terms">
           <Terms />
         </Route>
       </Switch>
