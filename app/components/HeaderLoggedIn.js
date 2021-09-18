@@ -1,12 +1,14 @@
 import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 function HeaderLoggedIn(props) {
-  function handleLogOut() {
+  function handleLogout() {
     props.setLoggedIn(false)
     localStorage.removeItem("reactappToken")
     localStorage.removeItem("reactappUsername")
     localStorage.removeItem("reactappAvatar")
   }
+
   return (
     <div className="flex-row my-3 my-md-0">
       <a href="#" className="text-white mr-2 header-search-icon">
@@ -19,10 +21,10 @@ function HeaderLoggedIn(props) {
       <a href="#" className="mr-2">
         <img className="small-header-avatar" src={localStorage.getItem("reactappAvatar")} />
       </a>
-      <a className="btn btn-sm btn-success mr-2" href="/create-post">
+      <Link className="btn btn-sm btn-success mr-2" to="/create-post">
         Create Post
-      </a>
-      <button onClick={handleLogOut} className="btn btn-sm btn-secondary">
+      </Link>
+      <button onClick={handleLogout} className="btn btn-sm btn-secondary">
         Sign Out
       </button>
     </div>
